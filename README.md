@@ -1,11 +1,27 @@
-# Homebrew support for Ecstasy #
+# Homebrew support for Ecstasy
 
 This is a public repository for the tools, utilities, and libraries that
-provide [Homebrew]() support for Ecstasy.
+provide [Homebrew](https://brew.sh/) support for Ecstasy.
 
 ## Status:
 
-In development.
+Experimental: 
+
+* macOS only
+* requires a tap for xtclang/xvm
+
+## Instructions
+
+The first time you use Homebrew to install the XDK, you will need to add this
+repository to your Homebrew. This is called "tapping" a repository, or "adding
+a tap":
+
+    brew tap xtclang/xvm
+
+Then, to install or update the XDK, just run the following two commands:
+
+    brew update
+    brew install xdk
 
 ## License
 
