@@ -5,10 +5,8 @@ provide [Homebrew](https://brew.sh/) support for Ecstasy.
 
 ## Status:
 
-Experimental: 
-
-* macOS only
-* requires a tap for xtclang/xvm
+* Currently macOS only
+* Requires a brew tap for xtclang/xvm
 
 ## Instructions
 
@@ -21,7 +19,7 @@ a tap":
 Then, to install or update the XDK, just run the following two commands:
 
     brew update
-    brew install xdk
+    brew install xdk-latest
 
 ## License
 
