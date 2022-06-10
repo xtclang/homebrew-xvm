@@ -1,4 +1,4 @@
-class Xdk-latest < Formula
+class XdkLatest < Formula
   desc "Ecstasy Development Kit (XDK)"
   homepage "https://github.com/xtclang/xvm/"
   url "http://xtclang.org/downloads/xdk-0.4.2ci12+fa368903df964188b46cf8d66c9ba639349f8745.tar.gz"
