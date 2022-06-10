@@ -3,6 +3,7 @@ class XdkLatest < Formula
   homepage "https://github.com/xtclang/xvm/"
   url "http://xtclang.org/downloads/xdk-0.4.2ci13+c8ca298fb61244310bc41ca3b216e2824cabb06d.tar.gz"
   sha256 "358a29786efef20d76e8eec35ad5aa913dfb98bbaf1b2a97bdbcfec474fa7eed"
+  version "0.4.2ci13"
   license "Apache-2.0"
 
   depends_on "openjdk"
