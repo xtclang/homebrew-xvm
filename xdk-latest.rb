@@ -8,15 +8,24 @@ class XdkLatest < Formula
 
   depends_on "openjdk"
 
+  on_linux do
+    OSNAME = "linux"
+  end
+
+  on_macos do
+    OSNAME = "macos"
+  end
+
   def install
     libexec.mkpath
     cp_r Dir[buildpath/"*"], libexec
-    bin.install_symlink "#{libexec}/bin/macos_launcher" => "xec"
-    bin.install_symlink "#{libexec}/bin/macos_launcher" => "xtc"
-    bin.install_symlink "#{libexec}/bin/macos_launcher" => "xam"
+    bin.install_symlink "#{libexec}/bin/#{OSNAME}_launcher" => "xec"
+    bin.install_symlink "#{libexec}/bin/#{OSNAME}_launcher" => "xtc"
+    bin.install_symlink "#{libexec}/bin/#{OSNAME}_launcher" => "xam"
   end
 
   test do
-    system "#{bin}/xec"
+    assert_match "Error: Module file required", shell_output("xec")
+    // assert_match "Error: Module file required", shell_output("#{bin}/xec")
   end
 end
