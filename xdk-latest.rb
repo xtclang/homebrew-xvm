@@ -13,7 +13,7 @@ class XdkLatest < Formula
     cp_r Dir[buildpath/"*"], libexec
 
     osname = "macos"
-    on_linux do
+    if OS.linux?
       osname = "linux"
     end
 
