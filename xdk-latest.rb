@@ -11,12 +11,7 @@ class XdkLatest < Formula
   def install
     libexec.mkpath
     cp_r Dir[buildpath/"*"], libexec
-
-    osname = "macos"
-    if OS.linux?
-      osname = "linux"
-    end
-
+    osname = OS.linux? ? "linux" : "macos"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xec"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xtc"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xam"
