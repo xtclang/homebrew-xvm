@@ -8,14 +8,15 @@ class XdkLatest < Formula
 
   depends_on "openjdk"
 
-  osname "macos"
-  on_linux do
-    osname = "linux"
-  end
-
   def install
     libexec.mkpath
     cp_r Dir[buildpath/"*"], libexec
+
+    osname = "macos"
+    on_linux do
+      osname = "linux"
+    end
+
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xec"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xtc"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xam"
