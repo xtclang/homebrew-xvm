@@ -8,12 +8,9 @@ class XdkLatest < Formula
 
   depends_on "openjdk"
 
+  osname = "macos"
   on_linux do
     osname = "linux"
-  end
-
-  on_macos do
-    osname = "macos"
   end
 
   def install
