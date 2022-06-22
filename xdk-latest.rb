@@ -8,7 +8,7 @@ class XdkLatest < Formula
 
   depends_on "openjdk"
 
-  osname = "macos"
+  osname "macos"
   on_linux do
     osname = "linux"
   end
