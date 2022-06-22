@@ -18,6 +18,7 @@ class XdkLatest < Formula
   end
 
   test do
+    print "*", shell_output("xec"), "*\n"
     assert_equal "Error: Module file required", shell_output("xec")
   end
 end
