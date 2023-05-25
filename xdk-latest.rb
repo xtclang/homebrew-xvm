@@ -1,9 +1,9 @@
 class XdkLatest < Formula
   desc "Ecstasy Development Kit (XDK)"
   homepage "https://github.com/xtclang/xvm/"
-  url "http://xtclang.org/downloads/xdk-0.4.3ci528+e265f26a7be7099db2d41eaa70f12bb0104ccd5c.tar.gz"
-  version "0.4.3.528"
-  sha256 "60fbd708ed69297f136b48226c089b7722573b1b769db07c3909e21ee63c010c"
+  url "http://xtclang.org/downloads/xdk-0.4.3ci529+267fea89bd73dfe719cf2e258e6aae3392322be3.tar.gz"
+  version "0.4.3.529"
+  sha256 "fca026c68df155b404aa7ad9182e439205ab1f82e6ce08f990701696ab3a58b2"
   license "Apache-2.0"
 
   depends_on "openjdk"
