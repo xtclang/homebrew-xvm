@@ -14,7 +14,7 @@ class XdkLatest < Formula
     osname = OS.linux? ? "linux" : "macos"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xec"
     bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xtc"
-    bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xam"
+    bin.install_symlink "#{libexec}/bin/#{osname}_launcher" => "xcc"
   end
 
   test do
