@@ -60,6 +60,10 @@ build/
 prj/
 .idea
 
+# Claude local settings #
+#########################
+.claude/
+
 # Gradle-specific project files #
 #################################
 .gradle
