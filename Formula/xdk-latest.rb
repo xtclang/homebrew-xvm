@@ -13,9 +13,9 @@ class XdkLatest < Formula
     # Fix the empty classpath in the shell scripts
     %w[xec xcc].each do |cmd|
       script_path = libexec/"bin"/cmd
-      # Replace empty classpath with path to javatools.jar
+      # Replace the line containing empty classpath  
       inreplace script_path, 
-                'CLASSPATH="\\\"\\\""',
+                /^CLASSPATH=.*$/,
                 'CLASSPATH="$APP_HOME/javatools/javatools.jar"'
     end
     
