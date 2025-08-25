@@ -10,6 +10,15 @@ class XdkLatest < Formula
   def install
     libexec.install Dir["*"]
     
+    # Fix the empty classpath in the shell scripts
+    %w[xec xcc].each do |cmd|
+      script_path = libexec/"bin"/cmd
+      # Replace empty classpath with path to javatools.jar
+      inreplace script_path, 
+                /^CLASSPATH="\\\\\"\\\\\""/,
+                'CLASSPATH="$APP_HOME/javatools/javatools.jar"'
+    end
+    
     # Install Unix launchers (xec = Ecstasy Execution, xcc = Ecstasy Compiler)
     %w[xec xcc].each do |cmd|
       (bin/cmd).write_env_script(libexec/"bin"/cmd, JAVA_HOME: Formula["openjdk@24"].opt_prefix)
