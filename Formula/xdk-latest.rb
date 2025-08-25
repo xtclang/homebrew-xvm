@@ -15,7 +15,7 @@ class XdkLatest < Formula
       script_path = libexec/"bin"/cmd
       # Replace empty classpath with path to javatools.jar
       inreplace script_path, 
-                /^CLASSPATH="\\\\\"\\\\\""/,
+                'CLASSPATH="\\\"\\\""',
                 'CLASSPATH="$APP_HOME/javatools/javatools.jar"'
     end
     
