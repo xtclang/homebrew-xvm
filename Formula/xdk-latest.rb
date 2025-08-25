@@ -3,21 +3,12 @@ class XdkLatest < Formula
   homepage "https://github.com/xtclang/xvm/"
   url "https://raw.githubusercontent.com/xtclang/homebrew-xvm/lagergren/brew-tap/downloads/xdk-latest.zip"
   version "0.4.4-SNAPSHOT"
-  sha256 "07d88f8b86de4c97728c952f86a2fc4ed881301def09f7a093d18983bbe9509c"
+  sha256 "efd0fe9161b513f4434767778224409d48e243a48e0ab0e8d5e2d712c345c969"
   license "Apache-2.0"
   depends_on "openjdk@24"
   
   def install
     libexec.install Dir["*"]
-    
-    # Fix the empty classpath in the shell scripts
-    %w[xec xcc].each do |cmd|
-      script_path = libexec/"bin"/cmd
-      # Replace the line containing empty classpath  
-      inreplace script_path, 
-                /^CLASSPATH=.*$/,
-                'CLASSPATH="$APP_HOME/javatools/javatools.jar"'
-    end
     
     # Install Unix launchers (xec = Ecstasy Execution, xcc = Ecstasy Compiler)
     %w[xec xcc].each do |cmd|
