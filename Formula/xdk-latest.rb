@@ -3,7 +3,7 @@ class XdkLatest < Formula
   homepage "https://github.com/xtclang/xvm/"
   url "https://github.com/xtclang/xvm/releases/download/xdk-latest-snapshot/xdk-0.4.4-SNAPSHOT.zip"
   version "0.4.4-SNAPSHOT.492e192f924459b3aef73d37187bd9021ba41d67"
-  sha256 "afc5685595ebcf3f4531929462a89b9d42e1066dbfb833a27027a77d1e1885f1"
+  sha256 "694078c23094a2a65f57a7d9b2ff03f240459d25c5819980e5bf8e22ecc5c5c5"
   license "Apache-2.0"
   depends_on "openjdk@21"
   
