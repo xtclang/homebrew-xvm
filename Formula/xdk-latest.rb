@@ -2,16 +2,16 @@ class XdkLatest < Formula
   desc "Ecstasy Development Kit (XDK) - A revolutionary programming language and runtime"
   homepage "https://github.com/xtclang/xvm/"
   url "https://github.com/xtclang/xvm/releases/download/xdk-latest-snapshot/xdk-0.4.4-SNAPSHOT.zip"
-  version "0.4.4-SNAPSHOT.20250904175130"
-  sha256 "297a3f7fc9faa44e86e907583739cc25f21651bd4af67ecba3d8f81426da0f4e"
+  version "0.4.4-SNAPSHOT.20250905115322"
+  sha256 "cc0707b44ae1f1e4bf391be6626d0cef7e84e53c960c538528320eaf616b30b2"
   license "Apache-2.0"
   depends_on "openjdk@24"
   
   def install
     libexec.install Dir["*"]
     
-    # Install Unix launchers (xec = Ecstasy Execution, xcc = Ecstasy Compiler)
-    %w[xec xcc].each do |cmd|
+    # Install Unix launchers (xec = Ecstasy Execution, xcc = Ecstasy Compiler, xtc = Ecstasy Terminal Command)
+    %w[xec xcc xtc].each do |cmd|
       (bin/cmd).write_env_script(libexec/"bin"/cmd, JAVA_HOME: Formula["openjdk@24"].opt_prefix)
     end
   end
@@ -24,6 +24,10 @@ class XdkLatest < Formula
     
     # Test that xcc launcher works and shows version info
     output = shell_output("#{bin}/xcc --version 2>&1")
+    assert_match "Ecstasy", output
+
+    # Test that xtc launcher works and shows version info
+    output = shell_output("#{bin}/xtc --version 2>&1")
     assert_match "Ecstasy", output
   end
 end
