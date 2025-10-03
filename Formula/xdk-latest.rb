@@ -2,8 +2,8 @@ class XdkLatest < Formula
   desc "Ecstasy Development Kit (XDK) - A revolutionary programming language and runtime"
   homepage "https://github.com/xtclang/xvm/"
   url "https://github.com/xtclang/xvm/releases/download/xdk-latest-snapshot/xdk-0.4.4-SNAPSHOT.zip"
-  version "0.4.4-SNAPSHOT.20251003121153"
-  sha256 "6dd2198a82f8a29ac8f223379c53a8807668b59af69ea05a76e3bc43da7f4d7f"
+  version "0.4.4-SNAPSHOT.20251003122504"
+  sha256 "1b72a0d4394965dd85d8f0128461b8215909cbaa92c573c3f89d11bee0b0ddc9"
   license "Apache-2.0"
   depends_on "openjdk@25"
   
