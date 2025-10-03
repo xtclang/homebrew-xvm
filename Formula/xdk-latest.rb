@@ -2,17 +2,17 @@ class XdkLatest < Formula
   desc "Ecstasy Development Kit (XDK) - A revolutionary programming language and runtime"
   homepage "https://github.com/xtclang/xvm/"
   url "https://github.com/xtclang/xvm/releases/download/xdk-latest-snapshot/xdk-0.4.4-SNAPSHOT.zip"
-  version "0.4.4-SNAPSHOT.20251002202841"
-  sha256 "e560cc0c86b4c5697699c31e8e3203bf12a96cce3d5fbe47b7216d2b993fb886"
+  version "0.4.4-SNAPSHOT.20251003073323"
+  sha256 "6974dfd911949f9d4227e60340cade678a3ba90e42188a933c76fdac6ddfe5c8"
   license "Apache-2.0"
-  depends_on "openjdk@24"
+  depends_on "openjdk@25"
   
   def install
     libexec.install Dir["*"]
     
     # Install Unix launchers (xec = Ecstasy Execution, xcc = Ecstasy Compiler)
     %w[xec xcc].each do |cmd|
-      (bin/cmd).write_env_script(libexec/"bin"/cmd, JAVA_HOME: Formula["openjdk@24"].opt_prefix)
+      (bin/cmd).write_env_script(libexec/"bin"/cmd, JAVA_HOME: Formula["openjdk@25"].opt_prefix)
     end
   end
   
