@@ -5,7 +5,7 @@ provide [Homebrew](https://brew.sh/) support for Ecstasy.
 
 ## Status:
 
-* Currently supported on macOS only
+* Supported on macOS and Linux (via Homebrew/Linuxbrew)
 * Requires a brew tap for xtclang/xvm
 
 ## Instructions

@@ -8,57 +8,51 @@ xdk build looks like:
 
     /xdk
       /bin
-        macos_launcher
-        ... 
+        xec             // Ecstasy execution (Unix shell script)
+        xcc             // Ecstasy compiler (Unix shell script)
+        xtc             // Ecstasy tools (Unix shell script)
+        xec.bat         // Windows batch file
+        xcc.bat         // Windows batch file
+        xtc.bat         // Windows batch file
       /doc
       /examples
-      /javatools
       /lib
       README.md
 
-after running the macos_launcher it looks like:
+brew install needs to shift the content down under libexec and create symlinks:
 
     /xdk
-      /bin
-        macos_launcher
-        xec             // copy of macos_launcher
-        xtc             // copy of macos_launcher
-        xam             // copy of macos_launcher
-        ...
-      /doc
-      /examples
-      /javatools
-      /lib
-      README.md
-
-brew install needs to shift the content down under libexec and do the work that macos_launcher does:
-
-    /xdk
-      /0.3
+      /0.x.x-SNAPSHOT
         /bin
           xec             // symlink to ../libexec/bin/xec
-          xtc             // symlink to ../libexec/bin/xtc
-          xam             // symlink to ../libexec/bin/xam
+          xcc             // symlink to ../libexec/bin/xcc
+          xtc             // symlink to ../libexec/bin/xtc (optional)
         /libexec
           /bin
-            macos_launcher
-            xec           // copy of macos_launcher
-            xtc           // copy of macos_launcher
-            xam           // copy of macos_launcher
-            ...
+            xec           // Unix shell script
+            xcc           // Unix shell script
+            xtc           // Unix shell script
+            xec.bat       // Windows batch file
+            xcc.bat       // Windows batch file
+            xtc.bat       // Windows batch file
           /doc
           /examples
-          /javatools
           /lib
           README.md
 
 the reason is that the contents of /xdk/bin get symlinked into /opt/homebrew/bin
 
-use bin.install_symlink to do this:
+Current formula uses write_env_script to set JAVA_HOME and create wrapper scripts:
+
+    %w[xec xcc].each do |cmd|
+      (bin/cmd).write_env_script(libexec/"bin"/cmd, JAVA_HOME: Formula["openjdk@25"].opt_prefix)
+    end
+
+Alternative approach using bin.install_symlink (if env vars not needed):
 
     bin.install_symlink "#{libexec}/bin/xec" => "xec"
+    bin.install_symlink "#{libexec}/bin/xcc" => "xcc"
     bin.install_symlink "#{libexec}/bin/xtc" => "xtc"
-    bin.install_symlink "#{libexec}/bin/xam" => "xam"
   
 See:
 * https://github.com/Homebrew/discussions/discussions/546
@@ -69,9 +63,9 @@ See:
 
 names:
 
-* `xdk` - latest stable version (in homebrew)
-* `xdk-latest` - latest CI build (in `xtclang/homebrew-xvm` repo)
-* `xdk@0.3` - once we have versions that we may want to go back to, the latest stable
+* `xdk` - latest stable version (in homebrew core - not yet available)
+* `xdk-latest` - latest snapshot CI build (in `xtclang/homebrew-xvm` tap)
+* `xdk@0.x` - once we have versions that we may want to go back to, the latest stable
   build of an explicit major or major/minor version 
 
 background:
@@ -80,12 +74,12 @@ background:
 *
 * [installing and pinning specific old formula version](https://remarkablemark.org/blog/2017/02/03/install-brew-package-version/)
 *
-* or with version in the name e.g. "xdk" vs "xdk@latest" vs "xdk@0.3":
+* or with version in the name e.g. "xdk" vs "xdk@latest" vs "xdk@0.x":
 
 ```
     brew unlink xdk-latest
-    brew install xdk@0.3
-    brew link xdk@0.3 --force
+    brew install xdk@0.x
+    brew link xdk@0.x --force
 ```
 
 requirements:
